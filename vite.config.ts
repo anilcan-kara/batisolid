@@ -1,7 +1,8 @@
-import vercel from "vite-plugin-vercel";
+import path from "node:path";
 import vikeSolid from "vike-solid/vite";
-import { defineConfig } from "vite";
 import vike from "vike/plugin";
+import { defineConfig } from "vite";
+import vercel from "vite-plugin-vercel";
 
 export default defineConfig({
   plugins: [
@@ -13,7 +14,11 @@ export default defineConfig({
       source: "/.*",
     }),
   ],
-
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   vercel: {
     additionalEndpoints: [
       {
